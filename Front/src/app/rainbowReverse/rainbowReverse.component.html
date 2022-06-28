@@ -1,0 +1,9 @@
+  <input
+    [(ngModel)]="inputString"
+  >
+  <div>
+  <p *ngFor="let letter of inputString | reverse">
+    <a ngDefaultControl [(ngModel)]="letterColor" [ngStyle]="{color: letterColor | randomColor}">
+    {{letter}}
+    </a>
+  </div>

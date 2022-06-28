@@ -6,7 +6,4 @@ import { NgModule } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  public inputString!: string;
-  public letterColor!: string;
-}
+export class AppComponent {}
