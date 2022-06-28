@@ -23,7 +23,7 @@ import { Student } from './models/student';
         //.pipe(retry(1), catchError(this.handleError));
     }
 
-    getEmployee(id: any): Observable<Student> {
+    getStudent(id: any): Observable<Student> {
       return this.http
         .get<Student>(this.apiURL + '/api/students/' + id)
         //.pipe(retry(1), catchError(this.handleError));
