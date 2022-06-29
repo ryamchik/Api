@@ -9,7 +9,7 @@ import { Student } from './models/student';
   })
   export class RestApiService {
     // Define API
-    apiURL = 'http://localhost:7109';
+    apiURL = 'http://localhost:7109/api/student';
     constructor(private http: HttpClient) {}
     httpOptions = {
       headers: new HttpHeaders({
@@ -19,20 +19,20 @@ import { Student } from './models/student';
     
     getStudents(): Observable<Student> {
       return this.http
-        .get<Student>(this.apiURL + '/api/student')
+        .get<Student>(this.apiURL)
         .pipe(retry(1), catchError(this.handleError));
     }
 
     getStudent(id: any): Observable<Student> {
       return this.http
-        .get<Student>(this.apiURL + '/api/student/' + id)
+        .get<Student>(this.apiURL + id)
         .pipe(retry(1), catchError(this.handleError));
     }
 
     createStudent(employee: any): Observable<Student> {
       return this.http
         .post<Student>(
-          this.apiURL + '/api/student/create',
+          this.apiURL,
           JSON.stringify(employee),
           this.httpOptions
         )
@@ -42,7 +42,7 @@ import { Student } from './models/student';
     updateStudent(id: any, employee: any): Observable<Student> {
       return this.http
         .put<Student>(
-          this.apiURL + '/api/student/update' + id,
+          this.apiURL + id,
           JSON.stringify(employee),
           this.httpOptions
         )
@@ -51,7 +51,7 @@ import { Student } from './models/student';
 
     deleteStudent(id: any) {
       return this.http
-        .delete<Student>(this.apiURL + 'api/student/delete' + id, this.httpOptions)
+        .delete<Student>(this.apiURL + id, this.httpOptions)
         .pipe(retry(1), catchError(this.handleError));
     }
 

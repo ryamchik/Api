@@ -1,9 +1,7 @@
-import { Time } from "@angular/common";
-
 export class Student {
-    id!: string;
+    id!: number;
     name!: string;   
-    date!: Date;
-    dateTime!: Time;
+    date!: string;
+    time!: string;
     group!: string;
 }
