@@ -8,21 +8,42 @@
 </head>
 <body>
   <form>
-    <label>Id:</label><br>
-    <input [(ngModel)]="studentForm.id"><br>
-    <label>ФИО:</label><br>
-    <input [(ngModel)]="studentForm.name"><br>
-    <label>Дата:</label><br>
-    <input [(ngModel)]="studentForm.date"><br>
-    <label>Время:</label><br>
-    <input [(ngModel)]="studentForm.time"><br>
-    <label>Группа:</label><br>
-    <input [(ngModel)]="studentForm.group"><br>
-    <button (click)="createStudent()">Сохранить</button>
+    <div class="form-group">
+      <label>Id:</label><br>
+      <input [(ngModel)]="studentForm.id" name="id" class="form-control"><br>
+      <label>ФИО:</label><br>
+      <input [(ngModel)]="studentForm.name" name="name" class="form-control"><br>
+      <label>Дата:</label><br>
+      <input [(ngModel)]="studentForm.date" name="date" class="form-control"><br>
+      <label>Время:</label><br>
+      <input [(ngModel)]="studentForm.time" name="time" class="form-control"><br>
+      <label>Группа:</label><br>
+      <input [(ngModel)]="studentForm.group" name="group" class="form-control"><br>
+      <button (click)="createStudent()" class="form-control">Сохранить</button>
+    </div>
   </form>
+
   <table>
-    <tr *ngFor="let student of students"><td>{{student}}</td></tr>
+    <tr>
+      <th>Id</th>
+      <th>ФИО</th>
+      <th>Дата</th>
+      <th>Время</th>
+      <th>Группа</th>
+    </tr>
+    <tr (ngModel)="students" ngDefaultControl *ngFor="let student of students">
+      <td>{{student.id}}</td>
+      <td>{{student.name}}</td>
+      <td>{{student.date}}</td>
+      <td>{{student.time}}</td>
+      <td>{{student.group}}</td>
+    </tr>
   </table>
-  <rainbow></rainbow>
+  
+  <form>
+    <div class="form-group"> 
+      <rainbow></rainbow>
+    </div>
+  </form>
 </body>
 </html>
