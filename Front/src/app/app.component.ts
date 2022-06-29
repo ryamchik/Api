@@ -12,8 +12,23 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   students: Student[] = [];
+  studentForm: Student = new Student();
+
   constructor(public restApi: RestApiService, public router: Router) {}
+  
   ngOnInit(): void {
+    this.getStudents();
+  }
+
+  createStudent() {
+    try{
+      this.restApi.getStudent(this.studentForm.id);
+      this.restApi.updateStudent(this.studentForm.id, this.studentForm);
+    }
+    catch(e){
+      this.restApi.createStudent(this.studentForm);
+    }
+
     this.getStudents();
   }
 

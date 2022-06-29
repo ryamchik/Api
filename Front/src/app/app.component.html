@@ -7,6 +7,19 @@
   <title>Document</title>
 </head>
 <body>
+  <form>
+    <label>Id:</label><br>
+    <input [(ngModel)]="studentForm.id"><br>
+    <label>ФИО:</label><br>
+    <input [(ngModel)]="studentForm.name"><br>
+    <label>Дата:</label><br>
+    <input [(ngModel)]="studentForm.date"><br>
+    <label>Время:</label><br>
+    <input [(ngModel)]="studentForm.time"><br>
+    <label>Группа:</label><br>
+    <input [(ngModel)]="studentForm.group"><br>
+    <button (click)="createStudent()">Сохранить</button>
+  </form>
   <table>
     <tr *ngFor="let student of students"><td>{{student}}</td></tr>
   </table>
