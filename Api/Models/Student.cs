@@ -2,11 +2,20 @@
 {
     public class Student
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }  
-        public DateOnly Date { get; set; }
-        public DateTime Time { get; set; }
+        public string Date { get; set; }
+        public string Time { get; set; }
         public string Group { get; set; }
+
+        public Student(int id, string name, string date, string time, string group)
+        {
+            Id = id;
+            Name = name;
+            Date = date;
+            Time = time;
+            Group = group;
+        }
     }
 }
