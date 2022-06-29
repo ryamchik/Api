@@ -26,10 +26,11 @@ namespace Api.Controllers
         [HttpGet("{id}")]
         public Student Get(int id)
         {
-            if (id > 0 && id <= students.Count)
-                return students[id-1];
+            var indexOfStudent = students.FindIndex(student => student.Id == id);
+            if (indexOfStudent > 0)
+                return students[indexOfStudent];
             else
-                return null;
+                throw new Exception("Студента c таким id = " + id + " нет в расписании");
         }
 
         // POST api/<StudentController>
@@ -51,8 +52,9 @@ namespace Api.Controllers
         [HttpPut("{id}")]
         public void Put(int id, string name, string date, string time, string group)
         {
-            if (id > 0 && id <= students.Count)
-                students[id - 1] = new Student(id, name, date, time, group);
+            var indexOfStudent = students.FindIndex(student => student.Id == id);
+            if (indexOfStudent > 0)
+                students[indexOfStudent] = new Student(id, name, date, time, group);
             else
                 throw new Exception("Студента c таким id = " + id + " нет в расписании");
         }
@@ -61,8 +63,11 @@ namespace Api.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            if (id > 0 && id <= students.Count)
-                students.RemoveAt(id - 1);
+            var indexOfStudent = students.FindIndex(student => student.Id == id);
+            if (indexOfStudent > 0)
+                students.RemoveAt(indexOfStudent);
+            else
+                throw new Exception("Студента c таким id = " + id + " нет в расписании");
         }
     }
 }

@@ -5,12 +5,14 @@ namespace Api.tests.Controllers
     public class StudentControllerDeleteTests
     {
         [Theory]
-        [InlineData(1)]
+        [InlineData(3)]
         public void DeleteStudent(int id)
         {
             var controller = new StudentController();
             controller.Delete(id);
-            Assert.Throws<Exception>(() => controller.Get(id));
+            var exception = Assert.Throws<Exception>(() => controller.Get(id));
+
+            Assert.Equal("Студента c таким id = " + id + " нет в расписании", exception.Message);
         }
 
         [Theory]
@@ -19,7 +21,9 @@ namespace Api.tests.Controllers
         public void DeleteStudentError(int id)
         {
             var controller = new StudentController();
-            Assert.Throws<Exception>(() => controller.Delete(id));
+            var exception = Assert.Throws<Exception>(() => controller.Delete(id));
+
+            Assert.Equal("Студента c таким id = " + id + " нет в расписании", exception.Message);
         }
     }
 }

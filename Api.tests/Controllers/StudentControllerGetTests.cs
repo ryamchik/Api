@@ -13,7 +13,7 @@ namespace Api.tests.Controllers
         }
 
         [Theory]
-        [InlineData(1)]
+        [InlineData(2)]
         public void GetOne(int id)
         {
             var controller = new StudentController();
@@ -27,8 +27,9 @@ namespace Api.tests.Controllers
         public void GetOneError(int id)
         {
             var controller = new StudentController();
-            var student = controller.Get(id);
-            Assert.Null(student);
+            var exception = Assert.Throws<Exception>(() => controller.Get(id));
+
+            Assert.Equal("Студента c таким id = " + id + " нет в расписании", exception.Message);
         }
     }
 }
