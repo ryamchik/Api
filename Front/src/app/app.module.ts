@@ -6,6 +6,8 @@ import { RainbowReverseComponent } from './rainbowReverse/rainbowReverse.compone
 import { HttpClientModule } from '@angular/common/http'
 import { RandomColorPipe } from 'src/pipes/randomColor.pipe';
 import { ReversePipe } from 'src/pipes/reverse.pipe';
+import { RouterModule, Route  } from '@angular/router';
+import { RestApiService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -18,8 +20,9 @@ import { ReversePipe } from 'src/pipes/reverse.pipe';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot([])
   ],
-  providers: [],
+  providers: [RestApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
