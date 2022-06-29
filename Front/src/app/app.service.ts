@@ -9,7 +9,7 @@ import { Student } from './models/student';
   })
   export class RestApiService {
     // Define API
-    apiURL = 'http://localhost:7109/api/student';
+    apiURL = 'http://localhost:5109/api/Student';
     constructor(private http: HttpClient) {}
     httpOptions = {
       headers: new HttpHeaders({
@@ -29,21 +29,21 @@ import { Student } from './models/student';
         .pipe(retry(1), catchError(this.handleError));
     }
 
-    createStudent(employee: any): Observable<Student> {
-      return this.http
+    createStudent(student: Student):void {
+      this.http
         .post<Student>(
           this.apiURL,
-          JSON.stringify(employee),
+          JSON.stringify(student),
           this.httpOptions
         )
         .pipe(retry(1), catchError(this.handleError));
     }
   
-    updateStudent(id: any, employee: any): Observable<Student> {
+    updateStudent(id: any, student: any): Observable<Student> {
       return this.http
         .put<Student>(
           this.apiURL + id,
-          JSON.stringify(employee),
+          JSON.stringify(student),
           this.httpOptions
         )
         .pipe(retry(1), catchError(this.handleError));
